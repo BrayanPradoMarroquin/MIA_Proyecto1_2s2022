@@ -1,0 +1,7 @@
+mkdisk -path=/home/MIA/Disco3.dk -unit=M -Size=3 -fit=FF
+mkdisk -path=/home/MIA/Disco2.dk -unit=K -Size=30 -fit=FF
+fdisk -path=/home/MIA/Disco2.dk -unit=K -Size=4 -name="primera"
+fdisk -path=/home/MIA/Disco2.dk -unit=K -Size=5 -name="segundo"
+fdisk -path=/home/MIA/Disco3.dk -unit=K -Size=4 -name="primera"
+
+rep
