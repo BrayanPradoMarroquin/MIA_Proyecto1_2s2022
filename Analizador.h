@@ -2,6 +2,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "mk.h"
+#include "Fdisk.h"
 
 using namespace std;
 
@@ -50,15 +52,15 @@ void Analizador(string entrada){
                 cout<<"Formateo de Disco"<<endl;
             }else if (Estado==1)
             {
-                //Analizadormk(line);
-                cout<<line<<endl;
+                Analizadormk(line);
+                //cout<<line<<endl;
             }else if (Estado==3)
             {
-                //AnalizadorFdisk(line);
-                cout<<"Hola"<<endl;
+                AnalizadorFdisk(line);
+                //cout<<"Hola"<<endl;
             }else if (Estado==4)
             {
-                //Analizadormk(line);
+                Analizadormk(line);
             }
             
             
@@ -73,18 +75,18 @@ void Analizador(string entrada){
         {
             if (line2=="mkdisk")
             {
-                //EjecutarMk();
+                EjecutarMk();
                 break;
             }else if (line2=="rep")
             {
                 cout<<"Reporte Generado Exitosamente :D "<<endl;
             }else if (line2=="rmdisk")
             {
-                //rmdisk();
+                rmdisk();
                 cout<<"Disco Removido"<<endl;
             }else if (line2=="fdisk")
             {
-                //EjecutarFdisk();
+                EjecutarFdisk();
                 break;
             }else if (line2=="mount")
             {
