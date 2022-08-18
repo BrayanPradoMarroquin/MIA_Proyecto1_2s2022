@@ -11,12 +11,12 @@ using namespace std;
 void escribir();
 
 struct Partitionn {
-  int size;
+  char name[25];
   char status;
   char type;
   int start;
-  char fit; 
-  char name[25]; 
+  char fit;
+  int size;  
 };
 
 struct mk
@@ -48,7 +48,6 @@ struct EBR
     int size; 
     int next;
 };
-
 
 mkdisk MBR;
 mk MBRT;
@@ -85,36 +84,32 @@ void Analizadormk(string dato){
     int Estado = 0;
     while (getline(nueva, linea, '='))
     {
-        if (linea=="-Size")
+        if (linea=="-s")
         {
             Estado=1;
-        }else if (linea=="-unit")
+        }else if (linea=="-u")
         {
             Estado = 2;
         }else if (linea=="-path")
         {
             Estado = 3;
-        }else if(linea=="-fit"){
+        }else if(linea=="-f"){
             Estado = 4;
         }else if (Estado==1)
         {
             MBR.size = stoi(linea);
-            cout<<MBR.size<<endl;
         }else if (Estado==2)
         {
             if (linea=="K")
             {
                 MBR.unit = 1024;
-                cout<<linea<<endl;
             }else if (linea=="M")
             {
                 MBR.unit = 1024*1024;
-                cout<<linea<<endl;
             }
         }else if (Estado==3)
         {
             MBR.path = linea;
-            cout<<MBR.path<<endl;
         }else if (Estado==4)
         {
             MBR.fit = linea;
@@ -212,7 +207,6 @@ void Analizadorrmdisk(string dato){
 }
 
 void rmdisk(){
-    cout<<"Hola Mundo"<<endl;
     if (MBR.path.length() > 0) {
         FILE *disk_file = fopen(MBR.path.c_str(), "rb");
         string respuesta;
